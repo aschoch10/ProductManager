@@ -9,6 +9,8 @@ app.use(cors(), express.json(), express.urlencoded({extended: true}));
 
 require("./config/mongoose.config")(DB)
 
+require("./routes/routes.products")(app);
+
 
 app.get("/api/hello", (req, res) =>{
     res.json({message: "Hello full stack"})
