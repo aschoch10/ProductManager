@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
 
 
 const Create = (props) => {
+    let history = useHistory();
     //state variables to hold form information
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
@@ -21,6 +23,7 @@ const Create = (props) => {
             .then(res => {
                 console.log(res.data);
                 console.log("Successfully written to database!");
+                history.push("/")
             })
             .catch(err => console.log(err))
             .catch(err => console.log('Error!!'))
@@ -28,9 +31,9 @@ const Create = (props) => {
     }
 
     return <div>
-        {JSON.stringify(title)}
+        {/* {JSON.stringify(title)}
         {JSON.stringify(price)}
-        {JSON.stringify(description)}
+        {JSON.stringify(description)} */}
             <form onSubmit={createProduct}className="container">
                 <div className="form-group">
                     <h2>Add new product:</h2>

@@ -3,6 +3,7 @@ import {Link, Switch, Route, Redirect} from 'react-router-dom'
 import Main from "./components/Main"
 import Create from "./components/Create"
 import ViewOne from './components/ViewOne';
+import Update from './components/Update'
 
 function App() {
   return (
@@ -24,6 +25,16 @@ function App() {
         <Route exact path="/products/:id">
           <ViewOne/>
         </Route>
+
+        <Route exact path="/">
+          <Redirect to="/products" />
+        </Route>
+
+        <Route exact path="/products/update/:id">
+          <Update/>
+        </Route>
+
+
 
 
       </Switch>

@@ -17,7 +17,9 @@ const ViewOne = (props) => {
     }, [])
 
     return <div>
-            <h2>One Product</h2>
+            <h2>{oneProduct.title}</h2>
+            <h3>{oneProduct.price}</h3>
+            <h3>{oneProduct.description}</h3>
     </div>;
 };
 

@@ -20,6 +20,17 @@ const Main = (props) => {
     }
     // console.log(products)
 
+    const deleteProduct = (productId) => {
+        // console.log(productId);
+        axios.delete('http://localhost:2222/api/products/' + productId)
+            .then(res => {
+                console.log("Succesful deletion!");
+                setProducts(products.filter((product) => product._id !== productId))
+            })
+            .catch(err => console.error(err));
+    }
+    
+
 
     return (
         <div className='container'>
@@ -43,17 +54,21 @@ const Main = (props) => {
                         {
                             products.map((product, idx) => {
                                 return (
-                                    
-                                    <div key= {idx}>
-                                    <tr >
+
+                                    <tr key={idx}>
                                         <td>{product.title}</td>
-                                        <td>{product.price}</td>
+                                        <td>${product.price}</td>
                                         <td>{product.description}</td>
-                                        <td><button className="btn btn-danger">Delete</button><Link to={"/products/" + product._id}> Show</Link></td>
+                                        <td>
+                                        <button onClick={() => { deleteProduct(product._id) }} className="btn btn-danger">Delete</button>
+                                        <Link to={"/products/" + product._id}> Show</Link>||
+                                        <Link to={"/products/update/" + product._id}> Update</Link>
+                                        
+                                        </td>
                                     </tr>
-                                    
-                                    
-                                    </div>
+
+
+
                                 )
                             })
                         }
