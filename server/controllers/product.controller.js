@@ -3,7 +3,7 @@ const Product = require('../models/product');
 module.exports = {
     findAll: (req, res) => {
         Product.find()
-            .then(allProducts => res.json({ products: allProducts }))
+            .then(allProducts => res.json(allProducts))
             .catch(err => res.json({ error: err }))
     },
 
