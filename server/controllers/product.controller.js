@@ -9,7 +9,7 @@ module.exports = {
 
     createNewProduct: (req, res) => {
         Product.create(req.body)
-            .then(newProduct => res.json(newProduct))
+            .then(newProduct => res.json({newProduct: newProduct}))
             .catch(err => res.json({ message: "error res", error: err }))
     },
 

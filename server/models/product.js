@@ -4,12 +4,12 @@ const ProductSchema = new mongoose.Schema({
     title:{
         type: String,
         required: [true, "{PATH} must be present"], 
-        minlength: [5, "{PATH} must be at least 5 characters"]
+        minlength: [2, "{PATH} must be at least 5 characters"]
     },
     price:{
         type: String,
         required: [true, "{PATH} must be present"], 
-        minlength: [5, "{PATH} must be at least 5 characters"]
+        minlength: [2, "{PATH} must be at least 5 characters"]
     },
     description: {
         type: String,
