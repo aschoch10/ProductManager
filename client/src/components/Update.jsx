@@ -29,11 +29,12 @@ const Update = (props) => {
             price,
             description
         }
-        //post to the database,(route comes from server routes) passing the object created above 
+        //put to the database,(route comes from server routes) passing the object created above 
         axios.put("http://localhost:2222/api/products/" + id, newProduct)
             .then(res => {
                 console.log(res.data);
                 console.log("Successfully written to database!");
+                //redirects to home page through app.js
                 history.push("/")
             })
             .catch(err => console.log(err))

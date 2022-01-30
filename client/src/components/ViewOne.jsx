@@ -3,12 +3,14 @@ import { useParams, useHistory } from  'react-router-dom';
 import axios from 'axios';
 
 const ViewOne = (props) => {
-    //getting varibale from URL
+    //
     let history = useHistory()
+    //getting varibale from URL
     const {id} = useParams()
+    //state variables for the show one page
     const [oneProduct, setOneProduct] = useState({})
-    const [products, setProducts] = useState([]);
 
+    //use effect is triggered once when the page loads, if anything is in the brackets it fires again when that function is run 
     useEffect(()=>{
         axios.get("http://localhost:2222/api/products/" + id)
         .then(res =>{
@@ -18,11 +20,13 @@ const ViewOne = (props) => {
         .catch(err => console.log(err))
     }, [])
 
+    //axios call using back end routes to delete product
     const deleteProduct = (productId) => {
         // console.log(productId);
         axios.delete('http://localhost:2222/api/products/' + productId)
             .then(res => {
                 console.log("Succesful deletion!");
+                //redirects via app.js
                 history.push("/")
             })
             .catch(err => console.error(err));

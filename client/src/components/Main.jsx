@@ -10,21 +10,25 @@ const Main = (props) => {
         getProductsDB()
     }, [])
 
+    //goes to backend api route via axios to get info
     const getProductsDB = () => {
         axios.get("http://localhost:2222/api/products")
             .then(res => {
                 // console.log(res.data);
+                //sets sproducts as the correct info .data to get down to the axios layer
                 setProducts(res.data);
             })
             .catch(err => console.log(err))
     }
     // console.log(products)
 
+    //delete product with axios call
     const deleteProduct = (productId) => {
         // console.log(productId);
         axios.delete('http://localhost:2222/api/products/' + productId)
             .then(res => {
                 console.log("Succesful deletion!");
+                //removes product from list dynamically upon deletion
                 setProducts(products.filter((product) => product._id !== productId))
             })
             .catch(err => console.error(err));

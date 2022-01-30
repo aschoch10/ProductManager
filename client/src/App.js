@@ -1,5 +1,6 @@
-import './App.css';
-import {Link, Switch, Route, Redirect} from 'react-router-dom'
+//import things from react that I'm using
+import { Link, Switch, Route, Redirect } from 'react-router-dom'
+//import my own components
 import Main from "./components/Main"
 import Create from "./components/Create"
 import ViewOne from './components/ViewOne';
@@ -9,30 +10,34 @@ function App() {
   return (
     <div className="App">
       <h1>Products</h1>
+      {/* nbsp non breaking space, just for spaces */}
       <Link to="/products">home</Link> &nbsp;&nbsp;&nbsp;
       <Link to="/products/new">create</Link>
-      <br/>
+      <br />
+      {/* Need to bring in switch to route between the components */}
       <Switch>
-
-        <Route exact path="/products">
-          <Main/>
+        {/* Paths go from most to least specific, if "/" route was first and didn't have 'exact' it would be loaded no matter what */}
+        <Route exact path="/products/update/:id">
+          <Update />
         </Route>
 
-        <Route exact path ="/products/new">
-          <Create/>
+        <Route exact path="/products/new">
+          <Create />
         </Route>
 
         <Route exact path="/products/:id">
-          <ViewOne/>
+          <ViewOne />
+        </Route>
+
+        <Route exact path="/products">
+          <Main />
         </Route>
 
         <Route exact path="/">
           <Redirect to="/products" />
         </Route>
 
-        <Route exact path="/products/update/:id">
-          <Update/>
-        </Route>
+
 
 
 

@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+
+//need browser router somewhere, puttin git here makes app.js less messy
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
